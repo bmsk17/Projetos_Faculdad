@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block headers %}
+<title>WebShoes</title>
+<meta name="description" content="Bem-vindo ao WebShoes! A melhor loja de calçados da Web.">
+{% endblock %}
+
+{% block content %}
+<h1>Bem-vindo ao WebShoes!</h1>
+<div class="grid-area">
+    {% for product in products %}
+        {% if product.stock %}
+            <div class="product-card">
+                <a href="/produto/{{product.pk}}">
+                    <img src="/static/img/{{product.image}}" alt="{{product.desc_short}}">
+                    <h2>{{product.name}}</h2>
+                </a>
+                <p>{{product.desc_short}}</p>
+                <div class="mono-font">
+                    R$ <strong >{{product.price}}</strong>
+                </div>
+                <div class="mono-font">
+                    Tamanho: <strong >{{product.size}}</strong>
+                </div>
+                <div></div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

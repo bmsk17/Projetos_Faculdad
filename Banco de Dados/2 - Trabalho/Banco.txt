@@ -1,0 +1,88 @@
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE Departamento (
+coddep INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(20) NOT NULL,
+PRIMARY KEY(coddep))
+
+CREATE TABLE Categoria (
+codcat INT NOT NULL AUTO_INCREMENT,
+cor VARCHAR(20) NOT NULL,
+peso FLOAT NOT NULL,
+marca VARCHAR(20) NOT NULL,
+modelo VARCHAR(20) NOT NULL,
+PRIMARY KEY(codcat,marca,modelo),
+FOREIGN KEY(coddep) REFERENCES Departamento (coddep)
+)
+
+CREATE TABLE Celular (
+capacidade FLOAT NOT NULL,
+cameraFrontal VARCHAR(20) NOT NULL,
+cameraTraseira VARCHAR(20) NOT NULL,
+bateria VARCHAR(20) NOT NULL,
+tela VARCHAR(20) NOT NULL,
+PRIMARY KEY(codcat,marca,modelo))
+
+CREATE TABLE Roteador (
+compatibilidadeSemFio BOOLEAN NOT NULL,
+taxaTranfDados FLOAT NOT NULL,
+bandaFreqSuportada FLOAT NOT NULL,
+tecnologiaConectividade VARCHAR(20) NOT NULL,
+numPortaEthernet INT NOT NULL,
+dimensoes VARCHAR(20) NOT NULL,
+PRIMARY KEY(codcat,marca,modelo))
+
+CREATE TABLE Camera (
+tamanhoTela VARCHAR(20) NOT NULL,
+estabilizacao BOOLEAN NOT NULL,
+resolucaoVideo VARCHAR(20) NOT NULL,
+resolucaoGravacao VARCHAR(20) NOT NULL,
+zoomOptico BOOLEAN NOT NULL,
+tipoVisor VARCHAR(20) NOT NULL,
+PRIMARY KEY(codcat,marca,modelo))
+
+CREATE TABLE Dvd (
+numPortasUSB INT NOT NULL,
+numPortasHDMI INT NOT NULL,
+anoModelo VARCHAR(20) NOT NULL,
+dimensoes VARCHAR(20) NOT NULL,
+tecnologiaConectividade VARCHAR(20) NOT NULL,
+PRIMARY KEY(codcat,marca,modelo))
+
+CREATE TABLE Laptop (
+tamanhoRam FLOAT NOT NULL,
+resolucaoExibicao VARCHAR(20) NOT NULL,
+tamanhoHD FLOAT NOT NULL,
+dimensoes VARCHAR(20) NOT NULL,
+VelocidadeProcessador VARCHAR(10) NOT NULL,
+sistemaOperacional VARCHAR(10) NOT NULL,
+tamanhoTela VARCHAR(20) NOT NULL,
+PRIMARY KEY(codcat,marca,modelo))
+
+CREATE TABLE Poduto (
+ASIN INT NOT NULL AUTO_INCREMENT,
+nome VARCHAR(20) NOT NULL,
+preço FLOAT NOT NULL,
+FOREIGN KEY(modelo,,,) REFERENCES Categoria (codcat,marca,modelo)
+PRIMARY KEY(ASIN))
+
+CREATE TABLE Usuario (
+codusuario INT NOT NULL AUTO_INCREMENT,
+email VARCHAR(10) NOT NULL,
+senha VARCHAR(10) NOT NULL,
+nome VARCHAR(10) NOT NULL,
+telefone VARCHAR(10) NOT NULL,
+endereco VARCHAR(10) NOT NULL,
+PRIMARY KEY(codusuario))
+
+CREATE TABLE Comenta (
+nota INT NOT NULL,
+conteudoComentario VARCHAR(10) NOT NULL,
+tituloComentario VARCHAR(10) NOT NULL,
+FOREIGN KEY(codusuario) REFERENCES Usuario (codusuario),
+FOREIGN KEY(ASIN) REFERENCES Poduto (ASIN)
+)
+

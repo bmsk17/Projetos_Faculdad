@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block headers %}
+<title>WebShoes - {{product.name}}</title>
+<meta name="description" content="{{product.desc_short}}">
+{% endblock %}
+
+{% block content %}
+
+<h1>{{product.name}}</h1>
+<img src="/static/img/{{product.image}}" alt="{{product.name}}">
+
+<hr>
+<p>
+    <strong>{{product.desc_short}}</strong>
+</p>
+
+<div class="mono-font">
+    R$ <strong >{{product.price}}</strong>
+</div>
+<div class="mono-font">
+    Tamanho: <strong >{{product.size}}</strong>
+</div>
+
+<p>{{product.desc_full}}</p>
+<p><strong>Estoque: {{product.stock}}</strong></p>
+
+<hr>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{product.pk}}">
+    <label for="quantity">Quantidade</label>
+    <input type="number" id="quantity" name="quantity" value="1" min="1", max="{{product.stock}}" required>
+    <button type="submit">ADICIONAR AO CARRINHO</button>
+</form>
+{% endblock %}

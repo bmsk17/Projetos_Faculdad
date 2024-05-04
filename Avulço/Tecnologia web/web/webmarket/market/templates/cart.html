@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block headers %}
+<title>WebShoes - Carrinho de compras</title>
+<meta name="description" content="WebShoes - Carrinho de compras">
+{% endblock %}
+
+{% block content %}
+<h1>Carrinho</h1>
+        
+{% if items %}
+    <ol>
+        {% for item in items %}
+        <li>
+            <h3><a href="/produto/{{item.prod.pk}}">{{ item.prod.name }} </a></h3>
+            <div>
+                <code>R$ <strong>{{ item.prod.price }}</strong></code>
+            </div>
+            <div>
+                <code>Tamanho: <strong>{{ item.prod.size }}</strong></code>
+            </div>
+            <div>
+                <code>Quantidade: <strong>{{ item.quantity }}</strong></code>
+            </div>
+            <form action="/remove_sale_item/" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ item.prod.pk }}">
+                <button type="submit">REMOVER DO CARRINHO</button>
+            </form>
+        </li>
+        <hr>
+        {% endfor %}
+    </ol>
+    <code>Total: R$ <strong>{{ total_price }}</strong></code>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <div id="payment-details"></div>
+    </form>
+    <hr>
+    <form action="/cancelar_compra/" method="post">
+        {% csrf_token %}
+        <button type="submit">CANCELAR COMPRA</button>
+    </form>
+    <script src="/static/js/cart.js"></script>
+{% else %}
+<center>
+    <em>
+        <strong>-- Carrinho vazio --</strong>
+    </em>
+</center>
+{% endif %}
+{% endblock %}

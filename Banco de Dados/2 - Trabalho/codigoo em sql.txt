@@ -1,0 +1,126 @@
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE Departamento (
+coddep VARCHAR(10) PRIMARY KEY,
+nome VARCHAR(10)
+)
+
+CREATE TABLE Categoria (
+codcat VARCHAR(10) PRIMARY KEY,
+coddep VARCHAR(10),
+FOREIGN KEY(coddep) REFERENCES Departamento (coddep)
+)
+
+CREATE TABLE Camera (
+tamanho da tela VARCHAR(10),
+resolução VARCHAR(10),
+opitical zoom VARCHAR(10),
+dimenssoes VARCHAR(10),
+tipo de visor VARCHAR(10),
+tamanho da tela1 VARCHAR(10),
+resolução de video VARCHAR(10),
+estabilização VARCHAR(10),
+modelo VARCHAR(10) PRIMARY KEY,
+codcat VARCHAR(10),
+FOREIGN KEY(codcat) REFERENCES Categoria (codcat)
+)
+
+CREATE TABLE Celular (
+bateria VARCHAR(10),
+Câmera taseira VARCHAR(10),
+tela VARCHAR(10),
+tipo de exibição VARCHAR(10),
+estiloo VARCHAR(10),
+Câmera frontal	 VARCHAR(10),
+Capacidade VARCHAR(10),
+cor VARCHAR(10),
+modelo VARCHAR(10) PRIMARY KEY,
+codcat VARCHAR(10),
+FOREIGN KEY(codcat) REFERENCES Categoria (codcat)
+)
+
+CREATE TABLE Dvd (
+numusb VARCHAR(10),
+numhdmi VARCHAR(10),
+tec conectividade VARCHAR(10),
+ano de modelo VARCHAR(10),
+dimensão VARCHAR(10),
+modelo VARCHAR(10) PRIMARY KEY,
+codcat VARCHAR(10),
+FOREIGN KEY(codcat) REFERENCES Categoria (codcat)
+)
+
+CREATE TABLE Laptop (
+tamanho ram VARCHAR(10),
+resolução de exibição VARCHAR(10),
+tamannho disco rigido VARCHAR(10),
+dimenssoes VARCHAR(10),
+velocidade processado VARCHAR(10),
+marca prrocessador VARCHAR(10),
+sistema operacioonal VARCHAR(10),
+tamanho tela VARCHAR(10),
+modelo VARCHAR(10) PRIMARY KEY,
+codcat VARCHAR(10),
+FOREIGN KEY(codcat) REFERENCES Categoria (codcat)
+)
+
+CREATE TABLE Roteador (
+dimenssão VARCHAR(10),
+numportas ethernet VARCHAR(10),
+tecnologia de conectividade VARCHAR(10),
+banda de frrequencia suportada VARCHAR(10),
+marca VARCHAR(10),
+taxa de trranferencia de dados VARCHAR(10),
+compatibilidade sem fio VARCHAR(10),
+peso VARCHAR(10),
+modelo VARCHAR(10) PRIMARY KEY,
+codcat VARCHAR(10),
+FOREIGN KEY(codcat) REFERENCES Categoria (codcat)
+)
+
+CREATE TABLE Usuario (
+email VARCHAR(10),
+codusuario VARCHAR(10) PRIMARY KEY,
+senha VARCHAR(10),
+nome VARCHAR(10),
+telefone VARCHAR(10),
+endererrçço VARCHAR(10),
+endererrçço1 VARCHAR(10),
+endererrçço2 VARCHAR(10),
+endererrçço3 VARCHAR(10),
+endererrçço4 VARCHAR(10)
+)
+
+CREATE TABLE Poduto (
+nome VARCHAR(10),
+ASIN VARCHAR(10) PRIMARY KEY,
+preço VARCHAR(10),
+codcat VARCHAR(10),
+FOREIGN KEY(codcat) REFERENCES Categoria (codcat)
+)
+
+CREATE TABLE Pedido (
+dt inicial VARCHAR(10),
+dt final VARCHAR(10),
+quantidade VARCHAR(10),
+preço total VARCHAR(10),
+tipo de pagamento VARCHAR(10),
+codusuario VARCHAR(10),
+ASIN VARCHAR(10),
+FOREIGN KEY(codusuario) REFERENCES Usuario (codusuario),
+FOREIGN KEY(ASIN) REFERENCES Poduto (ASIN)
+)
+
+CREATE TABLE Comenta (
+nota VARCHAR(10),
+comentario VARCHAR(10),
+Atributo3 VARCHAR(10),
+codusuario VARCHAR(10),
+ASIN VARCHAR(10),
+FOREIGN KEY(codusuario) REFERENCES Usuario (codusuario),
+FOREIGN KEY(ASIN) REFERENCES Poduto (ASIN)
+)
+

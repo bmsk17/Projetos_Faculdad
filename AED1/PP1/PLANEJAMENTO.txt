@@ -1,0 +1,55 @@
+PLANEJAMENTO DO PROJETO
+
+
+------------------------------------CLASSES DO PROJETO----------------------------------------------------------
+
+#Soldado
+ - ATRIBUTOS: nome, forca, raca,forca de combate, lista com soldados capturados.
+ - A forca de um soldado é a soma das for¸cas de combate de seus capturados.
+#Soldados capturados (Lista dinamica de soldados)
+ - ATRIBUTOS: Soldado e os da LISTA comum.
+#NO
+ - ATRIBUTOS: Soldado e seus atributos comums. 
+#Tropa(Pilha de soldados)
+ - ATRIBUTOS: Soldado e os da pilha comum.
+ - Ordenação de acordo com a forca.
+ - A força de uma tropa é a soma das forças de seus soldados.
+#Mapa de Batalha 
+ - Atributos: status(a) desocupado; (b) ocupado por um único soldado; (c) ocupado por uma única tropa.
+ - territorio com 100 quadradinho.
+
+------------------------------------FUNÇÕES DO PROJETO----------------------------------------------------------
+#MOVA
+ - ATRIBUTOS: posição inicial (i1, j1), posição final (i2, j2).
+ -FORMAÇÃO DE TROPA
+	+Se na posição final tiver uma UT da mesa raca.
+	+vira uma tropa ou adiciona os soldados a essa tropa.
+ - DESLOCAMENTO
+	+Se na posição final não tiver nada.
+	+trocar posição da UT.
+ - NADA
+	+Se a posição final for invalida ou nao houver UT na posição inicial.
+ - ATAQUE
+	+ Se na posição final tiver uma UT de outra raca.
+	+ Se a forca de quem ataca é maior:	
+		-> Se o líder atacado possui capturados: o capturado(vai para o santuario) mais antigo é dado para o 		que esta sendo atacado(nao perde a forac do capturado dado) nao vire um capturado.
+		-> Se o líder atacado nao possui capturados: o lider sofrendo ataque vira capturado do lider 				atacante(somar a forca do capturado).
+		-> Imprime:  “Ataque bem sucedido”, Se a UT atacada for aniquilada a UT atacante Faz o DESLOCAMENTO  		imprimi  “unidade nome+raça avança para (i2, j2)”.
+	+ Se a forca de quem ataca forlça menor ou igual a 2/3 da força inimiga:
+		-> o líder atacante consulta o santuario dando a ele nessa rodada 70% da forca(de quem a a string                 	  nome+raça colidam com a string nome+raça do líder atacante).
+ 		-> Se a nova forca for maior: ocorre o descrito acima.
+		-> Se a nova forca for menor: ocore o contra ataque(atacante vira atacado e vice-versa e ocorre o 			descrito acima). Imprime “Contra-ataque!”.
+	+ Se um ataque der empate, mesmo depois de acontecer a busca no santuario, nada acontecetudo.
+#FORCA_RAÇA(insere a raca)
+	+ imprimir forca total no tabuleiro de uma raca.
+#FORCA(insere a posição)
+	+ imprimir forca em determinada posição.
+	+ se nao tiver nada na posição imprimi -1.
+#TERR(insere a posição)
+	+  imprimir [nome raça força] do soldado no territorio,imprimir [[nome raça força]] do lider da tropa no 	territorio, imprimir [] caso nao tenha nada no territorio
+#MAX_ATAQUE(insere a posição)
+	+ descobrir qual o melhor ataque possivel  imprimir forca resultante desse ataque.
+	+ imprimir -1 se : nao tiver ninguem na posição, nao tiver inimigos alcançaveis.
+#FIM
+	+Você deve imprimir as respostas a todas os comandos de batalha uma linha por vez
+	+imprimir o nome da raca eliminada ou se só sobrar uma raca imprimir "raca tem supremacia sobre Tau!"

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block headers %}
+<title>WebShoes - Login</title>
+<meta name="description" content="WebShoes - Login">
+{% endblock %}
+
+{% block content %}
+<h1>Login</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Log In</button>
+    <strong>Não possui login? <a href="/accounts/signup">Registrar conta</a></strong>
+</form>
+{% endblock %}

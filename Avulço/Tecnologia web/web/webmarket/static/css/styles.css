@@ -1,0 +1,98 @@
+body {
+    font-family: system-ui, sans-serif;
+    background: #fbfbfb;
+    color: #111;
+    padding-bottom: 400px;
+}
+
+main {
+    margin: 0 auto;
+    padding: 32px;
+    max-width: 1600px;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+nav {
+    display: flex;
+    padding: 8px 32px;
+    background: #111;
+}
+
+nav a {
+    color: #fbfbfb;
+    padding: 8px;
+    margin: 0 8px
+}
+
+nav div:first-child {
+    flex-grow: 1;
+}
+
+label {
+    font-weight: 700;
+}
+
+input, label, textarea {
+    display: block;
+    width: 100%;
+    resize: vertical;
+}
+
+label {
+    cursor: pointer;
+    padding-bottom: 8px;
+}
+
+input, textarea {
+    margin-bottom: 16px;
+}
+
+.grid-area {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.dbg {
+    color: blue;
+    background: orangered;
+}
+
+.product-card {
+    padding-bottom: 23px;
+    border-bottom: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card h2 {
+    margin: 8px 0;
+}
+
+.product-card p {
+    margin: 8px 0;
+    flex-grow: 1;
+}
+
+.product-card > a {
+    text-decoration: none;
+    color: unset;
+}
+
+.product-card > a> h2:hover {
+    text-decoration: underline;
+    color: coral;
+}
+
+.mono-font {
+    font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+}
+
+ol, ul {
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,118 @@
+-- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE Departamento (
+coddep VARCHAR(10) PRIMARY KEY,
+nome VARCHAR(10)
+)
+
+CREATE TABLE Categoria_Camera_Celular_Dvd_Laptop_Roteador (
+codcat VARCHAR(10),
+modelo VARCHAR(10),
+tamanho da tela VARCHAR(10),
+estabilização VARCHAR(10),
+resolução de video VARCHAR(10),
+tamanho da tela1 VARCHAR(10),
+tipo de visor VARCHAR(10),
+dimensões VARCHAR(10),
+resolução VARCHAR(10),
+opitical zoom VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+cor VARCHAR(10),
+Capacidade VARCHAR(10),
+Câmera frontal	 VARCHAR(10),
+estilo VARCHAR(10),
+tipo de exibição VARCHAR(10),
+bateria VARCHAR(10),
+Câmera taseira VARCHAR(10),
+tela VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+numusb VARCHAR(10),
+numhdmi VARCHAR(10),
+tec conectividade VARCHAR(10),
+ano de modelo VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+dimensões VARCHAR(10),
+tamanho ram VARCHAR(10),
+resolução de exibição VARCHAR(10),
+tamannho disco rigido VARCHAR(10),
+dimenssoes VARCHAR(10),
+velocidade processado VARCHAR(10),
+marca prrocessador VARCHAR(10),
+sistema operacioonal VARCHAR(10),
+tamanho tela VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+peso VARCHAR(10),
+compatibilidade sem fio VARCHAR(10),
+taxa de transferencia de dados VARCHAR(10),
+marca VARCHAR(10),
+tecnologia de conectividade VARCHAR(10),
+banda de frequencia suportada VARCHAR(10),
+numportas ethernet VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+dimensões VARCHAR(10),
+coddep VARCHAR(10),
+PRIMARY KEY(codcat,modelo,modelo,modelo,modelo,modelo),
+FOREIGN KEY(coddep) REFERENCES Departamento (coddep)
+)
+
+CREATE TABLE Poduto (
+nome VARCHAR(10),
+ASIN VARCHAR(10) PRIMARY KEY,
+preço VARCHAR(10),
+codcat VARCHAR(10),
+modelo VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+-- Erro: nome do campo duplicado nesta tabela!
+modelo VARCHAR(10),
+FOREIGN KEY(modelo,,,,,,) REFERENCES Categoria_Camera_Celular_Dvd_Laptop_Roteador (codcat,modelo,modelo,modelo,modelo,modelo)
+)
+
+CREATE TABLE Usuario (
+email VARCHAR(10),
+codusuario VARCHAR(10) PRIMARY KEY,
+senha VARCHAR(10),
+nome VARCHAR(10),
+telefone VARCHAR(10)
+)
+
+CREATE TABLE endererrçço (
+endererrçço_PK INTEGER PRIMARY KEY,
+endererrçço VARCHAR(10),
+codusuario_FK VARCHAR(),
+FOREIGN KEY(codusuario_FK) REFERENCES Usuario (codusuario)
+)
+
+CREATE TABLE Pedido (
+dt inicial VARCHAR(10),
+dt final VARCHAR(10),
+quantidade VARCHAR(10),
+preço total VARCHAR(10),
+tipo de pagamento VARCHAR(10),
+codusuario VARCHAR(10),
+ASIN VARCHAR(10),
+FOREIGN KEY(codusuario) REFERENCES Usuario (codusuario),
+FOREIGN KEY(ASIN) REFERENCES Poduto (ASIN)
+)
+
+CREATE TABLE Comenta (
+nota VARCHAR(10),
+comentario VARCHAR(10),
+codusuario VARCHAR(10),
+ASIN VARCHAR(10),
+FOREIGN KEY(codusuario) REFERENCES Usuario (codusuario),
+FOREIGN KEY(ASIN) REFERENCES Poduto (ASIN)
+)
+

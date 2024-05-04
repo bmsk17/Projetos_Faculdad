@@ -1,0 +1,60 @@
+PLANEJAMENTO DO PROJETO
+
+
+------------------------------------CLASSES DO PROJETO----------------------------------------------------------
+
+#Soldado
+ - ATRIBUTOS: nome, forca, raca,forca de combate, lista com soldados capturados.-------------------> Fila com soldados capturados*
+ - A forca de um soldado é a soma das forcas de combate de seus capturados.
+#Soldados capturados (Lista dinamica de soldados)   -------------------------> Na realidade é uma fila, até mesmo no problema quando fala que quando tu captura ele entra no fim e quando tu entrega, é o primeiro da fila a ser entregue!!!
+ - ATRIBUTOS: Soldado e os da LISTA comum.--------------> Os soldados em si eu concordo com você que são uma lista!
+#NO ------------------------> Ai que tá, a gente vai precisar fazer o construtor No* específico para cada tipo de estrutura de dados!
+ - ATRIBUTOS: Soldado e seus atributos comums. 
+
+#Unidade Tática -------------------> Apenas uma suposição, já que os soldados podem ter uma fila/pilha atrelados a ele, aqui a gente instaciaria o soldado/uta e atribuiria as filas/pilhas de cada um;
+-ATRIBUTOS: Instanciar as Estruturas de dados e atribuir aos Soldados equivalentes (Se tiver sugestões adicione por favor)
+
+#Tropa(Pilha de soldados) -----------------------------------> Obs: É possível que a tropa se forme na entrada de dados, ou seja, quando formos ler o tabuleiro!!
+ - ATRIBUTOS: Soldado e os da pilha comum.
+ - Ordenação de acordo com a forca.
+ - A força de uma tropa é a soma das forças de seus soldados.
+#Mapa de Batalha -----------------------------------------------> Eu queria debater umas idéias com você, sobre como fazer essa matriz!! (Não sei se seria uma matriz de objetos (soldados))
+ - Atributos: status(a) desocupado; (b) ocupado por um único soldado; (c) ocupado por uma única tropa.
+ - territorio com 100 quadradinho.
+
+------------------------------------FUNÇÕES DO PROJETO----------------------------------------------------------
+#MOVA
+ - ATRIBUTOS: posição inicial (i1, j1), posição final (i2, j2).
+ -FORMAÇÃO DE TROPA
+	+Se na posição final tiver uma UT da mesa raca.
+	+vira uma tropa ou adiciona os soldados a essa tropa.
+ - DESLOCAMENTO
+	+Se na posição final não tiver nada.
+	+trocar posição da UT.
+        +Na versão 3 do pp1, o prof. adicionou como é o movimento da unidade -----------------------> Ela se move APENAS de 3 em 3 espaços e na vertical/horizontal NUNCA em diagonal
+ - NADA
+	+Se a posição final for invalida ou nao houver UT na posição inicial.
+ - ATAQUE
+	+ Se na posição final tiver uma UT de outra raca.
+	+ Se a forca de quem ataca é maior:	
+		-> Se o líder atacado possui capturados: o capturado(vai para o santuario) mais antigo é dado para o 		que esta sendo atacado(nao perde a forac do capturado dado) nao vire um capturado.
+		-> Se o líder atacado nao possui capturados: o lider sofrendo ataque vira capturado do lider 				atacante(somar a forca do capturado).
+		-> Imprime:  “Ataque bem sucedido”, Se a UT atacada for aniquilada a UT atacante Faz o DESLOCAMENTO  		imprimi  “unidade nome+raça avança para (i2, j2)”.
+	+ Se a forca de quem ataca forlça menor ou igual a 2/3 da força inimiga:
+		-> o líder atacante consulta o santuario dando a ele nessa rodada 70% da forca(de quem a a string                 	  nome+raça colidam com a string nome+raça do líder atacante).
+ 		-> Se a nova forca for maior: ocorre o descrito acima.
+		-> Se a nova forca for menor: ocore o contra ataque(atacante vira atacado e vice-versa e ocorre o 			descrito acima). Imprime “Contra-ataque!”.
+	+ Se um ataque der empate, mesmo depois de acontecer a busca no santuario, nada acontecetudo.
+#FORCA_RAÇA(insere a raca)
+	+ imprimir forca total no tabuleiro de uma raca.
+#FORCA(insere a posição)
+	+ imprimir forca em determinada posição.
+	+ se nao tiver nada na posição imprimi -1.
+#TERR(insere a posição)
+	+  imprimir [nome raça força] do soldado no territorio,imprimir [[nome raça força]] do lider da tropa no 	territorio, imprimir [] caso nao tenha nada no territorio
+#MAX_ATAQUE(insere a posição)
+	+ descobrir qual o melhor ataque possivel  imprimir forca resultante desse ataque.
+	+ imprimir -1 se : nao tiver ninguem na posição, nao tiver inimigos alcançaveis.
+#FIM
+	+Você deve imprimir as respostas a todas os comandos de batalha uma linha por vez
+	+imprimir o nome da raca eliminada ou se só sobrar uma raca imprimir "raca tem supremacia sobre Tau!"
